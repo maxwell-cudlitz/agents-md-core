@@ -18,7 +18,9 @@ Write structured logs (JSON lines) to stderr. Never write to files or manage rot
 
 When designing a new feature, first reflect and ask if a generic version would be appropriate; For example, if designing a feature that ingests some data of a certain type, if that data being ingested may be generified, ask if this should be implemented as an interface.
 
-Apps should be written as config-driven unix style applications. There should be a root-level yaml file that covers base behavior that is loaded into a dict by a config loader. Then, if a local config yaml is provided, it will override matching values. Finally, environment variables (KEY_ROOT__KEY_CHILD -> KEY_ROOT.KEY_CHILD) will override those. Variables in-code will always be keyed fully uppercase.
+Apps should be written as config-driven unix style applications. Configuration follows layered precedence (highest wins): environment variables → local override YAML → base YAML. Environment variables express nesting with double underscores (`KEY_ROOT__KEY_CHILD` → `key_root.key_child`). Variables in-code will always be keyed fully uppercase.
+
+The specific config library to use is defined in the language-specific skill MD file (e.g., PYTHON.md). If a language-specific skill file does not specify a config library, ask the user which library to use before proceeding.
 
 For standalone CLI tools and scripts, prioritize simplicity. Unit tests should be written for branching functions. Tests should assert behavior, not implementation details.
 
