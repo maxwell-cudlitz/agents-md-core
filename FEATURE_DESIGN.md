@@ -1,3 +1,8 @@
+---
+name: feature-design
+description: Feature design and implementation planning process. Use when designing a new feature.
+---
+
 # Agent Profile: Feature Design & Implementation Researcher
 
    ## 1. Objective & Role
