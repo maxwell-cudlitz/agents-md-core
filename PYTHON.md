@@ -8,7 +8,7 @@ Run python code within virtual environments maintained at the root of the projec
 > python3 -m venv venv
 > source venv/bin/activate
 
-Always gitignore venv/
+Always gitignore venv/ and pycache directories
 
 Dependencies should be pinned to explicit version and frozen to requirements.txt
 
