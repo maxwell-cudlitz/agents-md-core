@@ -18,18 +18,9 @@ Write structured logs (JSON lines) to stderr. Never write to files or manage rot
 
 When designing a new feature, first reflect and ask if a generic version would be appropriate; For example, if designing a feature that ingests some data of a certain type, if that data being ingested may be generified, ask if this should be implemented as an interface.
 
-Apps should be written as config-driven unix style applications. 
+Apps should be written as config-driven unix style applications. There should be a root-level yaml file that covers base behavior that is loaded into a dict by a config loader. Then, if a local config yaml is provided, it will override matching values. Finally, environment variables (KEY_ROOT__KEY_CHILD -> KEY_ROOT.KEY_CHILD) will override those
 
-Keep in mind CNCF standards when designing for distributed systems.
-1.) Distributable, such that applications are built as loosely coupled services, each of which performs a single function. This supports horizontal scalability.
-2.) Observable, such that requests crossing multiple services can be tracked through built-in monitoring, tracing and logging features to improve system understanding and reliability.
-3.) Portable, such that applications can take full advantage of cloud computing by not being tied to specific vendors or implementations.
-4.) Interoperable, such that services expose their functionality through APIs, allowing easy integration throughout the system.
-5.) Available, such that failure in a service is handled gracefully with minimal disruption to the application as a whole.
-
-If writing for distributed systems, maintain the unix-style application and wrap it with a REST api.
-
-For standalone CLI tools and scripts, prioritize simplicity
+For standalone CLI tools and scripts, prioritize simplicity. Unit tests should be written for branching functions.
 
 ## Coding style
 
