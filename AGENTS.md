@@ -22,6 +22,8 @@ Apps should be written as config-driven unix style applications. There should be
 
 For standalone CLI tools and scripts, prioritize simplicity. Unit tests should be written for branching functions.
 
+Do not swallow errors silently. Propagate errors using the language's idiomatic mechanism. Only handle an error at the layer that can meaningfully respond to it. At module or serviceboundaries, wrap errors with context describing what operation failed. Log errors once, at the outermost handler.
+
 ## Coding style
 
 When writing to a file, if the filesize exceeds 250 lines, review and see if the file may be broken into either smaller processes, optimized into fewer lines, or otherwise simplified. Prefer simple, easily-read and audited code to complex patterns at all times. Code should be DRY at all times.
